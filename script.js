@@ -14,33 +14,39 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 
-// تحديث الواجهة عند تغيير حالة المستخدم
+// التحكم في القائمة للهواتف
+const menuBtn = document.getElementById('menu-toggle');
+const sidebar = document.getElementById('sidebar');
+if(menuBtn) {
+    menuBtn.onclick = () => sidebar.classList.toggle('active');
+}
+
+// تبديل الأقسام
+window.showSection = (sectionId) => {
+    document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+    document.getElementById(sectionId + '-section').style.display = 'block';
+    sidebar.classList.remove('active');
+};
+
+// مراقبة الدخول
 onAuthStateChanged(auth, (user) => {
     const btn = document.getElementById('login-btn');
     const info = document.getElementById('user-info');
     if (user) {
         btn.innerText = "تسجيل الخروج";
-        info.innerText = "أهلاً: " + user.email.split('@')[0];
+        info.innerText = "مرحباً: " + user.email.split('@')[0];
     } else {
         btn.innerText = "تسجيل الدخول";
         info.innerText = "";
     }
 });
 
-// زر الدخول والخروج
 document.getElementById('login-btn').onclick = () => {
-    if (auth.currentUser) {
-        signOut(auth);
-    } else {
-        signInWithPopup(auth, provider).catch(err => alert("خطأ: " + err.message));
-    }
+    if (auth.currentUser) signOut(auth);
+    else signInWithPopup(auth, provider);
 };
 
-// حماية الروابط
 window.checkAuthAndDownload = (url) => {
-    if (auth.currentUser) {
-        window.open(url, '_blank');
-    } else {
-        alert("🔒 للتحميل، يجب عليك تسجيل الدخول أولاً بالبريد الإلكتروني.");
-    }
+    if (auth.currentUser) window.open(url, '_blank');
+    else alert("🔒 سجل دخولك أولاً للتحميل");
 };
