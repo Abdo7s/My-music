@@ -9,14 +9,15 @@
 </head>
 <body>
 
-    <nav class="sidebar">
+    <button class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></button>
+
+    <nav class="sidebar" id="sidebar">
         <div class="logo">
             <i class="fab fa-apple"></i> <span>Music</span>
         </div>
         <div class="menu">
-            <div class="item active"><i class="fas fa-home"></i> الرئيسية</div>
-            <div class="item"><i class="fas fa-th-large"></i> جديد</div>
-            <div class="item"><i class="fas fa-broadcast-tower"></i> الراديو</div>
+            <div class="item active" onclick="showSection('home')"><i class="fas fa-home"></i> الرئيسية</div>
+            <div class="item" onclick="showSection('new')"><i class="fas fa-th-large"></i> جديد</div>
             <div class="item"><i class="fas fa-search"></i> بحث</div>
         </div>
         
@@ -27,35 +28,23 @@
     </nav>
 
     <main class="main-content">
-        <header>
-            <h1>استكشف الجديد</h1>
-        </header>
-
-        <div class="music-grid">
-            <div class="card">
-                <div class="cover">
-                    <img src="https://via.placeholder.com/300/282828/ffffff?text=Song+1" alt="Cover">
-                    <button class="play-overlay"><i class="fas fa-play"></i></button>
+        <div id="home-section" class="section">
+            <h1>الرئيسية</h1>
+            <div class="music-grid">
+                <div class="card">
+                    <div class="cover">
+                        <img src="images/cover1.jpg" alt="Song Cover">
+                        <button class="play-overlay"><i class="fas fa-play"></i></button>
+                    </div>
+                    <h3>أغنية حماسية</h3>
+                    <button class="dl-button" onclick="checkAuthAndDownload('رابط_الأغنية')">تحميل</button>
                 </div>
-                <h3>عنوان الأغنية</h3>
-                <p>اسم الفنان</p>
-                <button class="dl-button" onclick="checkAuthAndDownload('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3')">
-                    <i class="fas fa-download"></i> تحميل
-                </button>
-            </div>
-
-            <div class="card">
-                <div class="cover">
-                    <img src="https://via.placeholder.com/300/282828/ffffff?text=Video+1" alt="Cover">
-                    <button class="play-overlay"><i class="fas fa-video"></i></button>
-                </div>
-                <h3>فيديو كليب جديد</h3>
-                <p>شاهد الآن</p>
-                <button class="dl-button" onclick="checkAuthAndDownload('رابط_الفيديو_هنا')">
-                    <i class="fas fa-download"></i> تحميل الفيديو
-                </button>
             </div>
         </div>
+
+        <div id="new-section" class="section" style="display:none;">
+            <h1>الإضافات الجديدة</h1>
+            </div>
     </main>
 
     <script type="module" src="script.js"></script>
