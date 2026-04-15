@@ -5,7 +5,7 @@ import { getDatabase, ref, set, push, onValue } from "https://www.gstatic.com/fi
 const firebaseConfig = {
   apiKey: "AIzaSyD4vkcYLzTqkGZuAA7ptkmltR2T8adTrW8",
   authDomain: "samtupe-7fb06.firebaseapp.com",
-  databaseURL: "https://samtupe-7fb06-default-rtdb.firebaseio.com", // رابط قاعدة البيانات
+  databaseURL: "https://samtupe-7fb06-default-rtdb.europe-west1.firebasedatabase.app/", // رابط قاعدة البيانات
   projectId: "samtupe-7fb06",
   appId: "1:563587575711:web:0cd090d82a65a84be657aa"
 };
@@ -26,7 +26,7 @@ onAuthStateChanged(auth, (user) => {
         authBtn.innerText = "تسجيل الخروج";
         document.getElementById('user-name').innerText = "أهلاً، " + user.displayName.split(' ')[0];
         // استبدل الإيميل بإيميلك الحقيقي لتتمكن من إضافة الموسيقى
-        if (user.email === "your-email@gmail.com") adminBtn.style.display = "block";
+        if (user.email === "ronjimy@gmail.com") adminBtn.style.display = "block";
     } else {
         authBtn.innerText = "تسجيل الدخول";
         document.getElementById('user-name').innerText = "";
