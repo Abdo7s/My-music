@@ -9,43 +9,38 @@
 </head>
 <body>
 
-    <button class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></button>
+    <button class="menu-btn" id="open-menu"><i class="fas fa-bars"></i></button>
 
     <nav class="sidebar" id="sidebar">
-        <div class="logo">
-            <i class="fab fa-apple"></i> <span>Music</span>
-        </div>
-        <div class="menu">
+        <div class="logo"><i class="fab fa-apple"></i> Music</div>
+        <div class="menu-items">
             <div class="item active" onclick="showSection('home')"><i class="fas fa-home"></i> الرئيسية</div>
-            <div class="item" onclick="showSection('new')"><i class="fas fa-th-large"></i> جديد</div>
-            <div class="item"><i class="fas fa-search"></i> بحث</div>
+            <div class="item" id="admin-add-btn" style="display:none;" onclick="openModal()"><i class="fas fa-plus-circle"></i> إضافة موسيقى</div>
         </div>
-        
-        <div class="auth-box">
-            <p id="user-info"></p>
-            <button id="login-btn" class="btn-primary">تسجيل الدخول</button>
+        <div class="user-box">
+            <p id="user-name"></p>
+            <button id="auth-btn" class="btn-main">تسجيل الدخول</button>
         </div>
     </nav>
 
-    <main class="main-content">
-        <div id="home-section" class="section">
-            <h1>الرئيسية</h1>
-            <div class="music-grid">
-                <div class="card">
-                    <div class="cover">
-                        <img src="images/cover1.jpg" alt="Song Cover">
-                        <button class="play-overlay"><i class="fas fa-play"></i></button>
-                    </div>
-                    <h3>أغنية حماسية</h3>
-                    <button class="dl-button" onclick="checkAuthAndDownload('رابط_الأغنية')">تحميل</button>
+    <main class="content">
+        <section id="home">
+            <h2 class="section-title">المكتبة الموسيقية</h2>
+            <div class="music-grid" id="music-container">
                 </div>
-            </div>
-        </div>
-
-        <div id="new-section" class="section" style="display:none;">
-            <h1>الإضافات الجديدة</h1>
-            </div>
+        </section>
     </main>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h3>نشر عمل جديد</h3>
+            <input type="text" id="s-title" placeholder="اسم الأغنية">
+            <input type="text" id="s-img" placeholder="رابط الصورة (URL)">
+            <input type="text" id="s-url" placeholder="رابط ملف التحميل (URL)">
+            <button onclick="uploadMusic()" class="btn-main">نشر الآن</button>
+            <button onclick="closeModal()" class="btn-cancel">إلغاء</button>
+        </div>
+    </div>
 
     <script type="module" src="script.js"></script>
 </body>
