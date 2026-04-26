@@ -1,32 +1,103 @@
-:root { --main: #ffcc00; --bg: #000; --card: #151515; --accent: #fa233b; }
-body { margin: 0; background: var(--bg); color: #fff; font-family: 'Segoe UI', sans-serif; direction: rtl; }
+:root {
+    --gold: #ffc107;
+    --bg: #0b0b0b;
+    --card-bg: #1a1a1a;
+}
 
-.main-header { padding: 15px; background: #111; border-bottom: 1px solid #222; position: sticky; top: 0; z-index: 1000; }
-.logo { font-size: 22px; font-weight: 900; color: var(--main); margin-bottom: 10px; text-align: center; }
-.logo span { color: #fff; }
+body {
+    margin: 0;
+    background: var(--bg);
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
 
-.search-engine { display: flex; max-width: 500px; margin: 0 auto; background: #222; border-radius: 25px; padding: 5px 15px; }
-.search-engine input { flex: 1; background: transparent; border: none; color: #fff; padding: 8px; outline: none; }
-.search-engine button { background: transparent; border: none; color: var(--main); cursor: pointer; }
+header {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid #222;
+    background: #000;
+}
 
-.container { padding: 15px; max-width: 700px; margin: 0 auto; }
+.search-box {
+    flex: 1;
+    background: var(--card-bg);
+    border-radius: 25px;
+    display: flex;
+    padding: 5px 20px;
+    align-items: center;
+}
 
-.shortcuts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 20px 0; }
-.icon-card { background: var(--card); padding: 12px; border-radius: 15px; text-align: center; text-decoration: none; color: #ccc; font-size: 11px; }
-.icon-card i { font-size: 24px; display: block; margin-bottom: 5px; }
+input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    width: 100%;
+    outline: none;
+    padding: 10px;
+    font-size: 16px;
+}
 
-.download-box { background: var(--card); padding: 20px; border-radius: 20px; border: 1px solid #333; }
-.download-box input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #444; background: #000; color: #fff; margin-bottom: 15px; box-sizing: border-box; }
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+}
 
-.controls-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
-.controls-grid select { padding: 10px; border-radius: 8px; background: #222; color: #fff; border: 1px solid #444; }
+#login-screen {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
 
-.btn-main-action { width: 100%; background: var(--main); color: #000; border: none; padding: 15px; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 16px; }
+.btn-g {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-.result-container { margin-top: 20px; background: #222; padding: 15px; border-radius: 15px; text-align: center; }
-.preview-media { width: 100%; border-radius: 10px; margin: 10px 0; background: #000; }
-.dl-link-final { display: block; background: var(--accent); color: #fff; padding: 12px; text-decoration: none; border-radius: 10px; font-weight: bold; margin-top: 10px; }
+main {
+    height: calc(100vh - 135px);
+    position: relative;
+}
 
-.loader { padding: 20px; text-align: center; }
-.spinner { width: 30px; height: 30px; border: 3px solid #333; border-top: 3px solid var(--main); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 10px; }
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+#home-placeholder {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+}
+
+nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 65px;
+    background: #000;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #222;
+    font-size: 24px;
+    color: #666;
+}
+
+nav div:hover {
+    color: var(--gold);
+}
