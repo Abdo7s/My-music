@@ -3,60 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snaptube Pro Web - المتصفح والمحمل الذكي</title>
+    <title>SamTupe Pro</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <div id="login-screen">
+        <div class="login-card">
+            <h1 style="color: #ffc107;">SamTupe</h1>
+            <p>مرحباً بك في متصفحك الخاص</p>
+            <button onclick="loginGoogle()" class="btn-g">
+                <i class="fab fa-google"></i> دخول بواسطة جوجل
+            </button>
+        </div>
+    </div>
 
-    <header class="main-header">
-        <div class="logo">SNAPTUBE<span>PRO</span></div>
-        <div class="search-engine">
-            <input type="text" id="browser-input" placeholder="ابحث في جوجل أو ادخل رابط موقع...">
-            <button onclick="goBrowse()"><i class="fas fa-search"></i></button>
+    <header>
+        <img id="user-img" src="" class="avatar" alt="User">
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="ابحث أو ضع رابط فيديو...">
+            <i class="fas fa-search" onclick="startSearch()" style="cursor: pointer;"></i>
         </div>
     </header>
 
-    <main class="container">
-        <section class="shortcuts">
-            <a href="https://www.youtube.com" target="_blank" class="icon-card"><i class="fab fa-youtube" style="color:#ff0000;"></i><span>يوتيوب</span></a>
-            <a href="https://www.facebook.com" target="_blank" class="icon-card"><i class="fab fa-facebook" style="color:#1877f2;"></i><span>فيسبوك</span></a>
-            <a href="https://www.tiktok.com" target="_blank" class="icon-card"><i class="fab fa-tiktok" style="color:#fff;"></i><span>تيك توك</span></a>
-            <a href="https://www.instagram.com" target="_blank" class="icon-card"><i class="fab fa-instagram" style="color:#e4405f;"></i><span>انستقرام</span></a>
-        </section>
-
-        <section class="download-box">
-            <h3><i class="fas fa-bolt"></i> محرك التحميل المتعدد الصيغ</h3>
-            <input type="text" id="video-url" placeholder="ضع رابط الفيديو هنا...">
-            
-            <div class="controls-grid">
-                <select id="format-type" onchange="toggleQualityOptions()">
-                    <option value="mp4">فيديو (MP4)</option>
-                    <option value="mp3">موسيقى (MP3)</option>
-                </select>
-
-                <select id="quality-selector">
-                    <option value="max">أعلى جودة متاحة (4K/HD)</option>
-                    <option value="1080">1080p</option>
-                    <option value="720">720p</option>
-                    <option value="480">480p</option>
-                    <option value="360">360p</option>
-                    <option value="144">144p</option>
-                </select>
-            </div>
-            
-            <button onclick="handleDownload()" id="action-btn" class="btn-main-action">استخراج ومعاينة</button>
-
-            <div id="loader" class="loader" style="display:none;">
-                <div class="spinner"></div>
-                <p>جاري فحص الروابط والجودات...</p>
-            </div>
-
-            <div id="result-area" class="result-container" style="display:none;">
-                </div>
-        </section>
+    <main>
+        <iframe id="main-frame" style="display:none; width:100%; height:100%; border:none;"></iframe>
+        <div id="home-placeholder">
+            <i class="fas fa-rocket" style="font-size: 50px; color: #333;"></i>
+            <h3>المحرك جاهز، ابدأ التصفح الآن</h3>
+        </div>
     </main>
 
-    <script type="module" src="script.js"></script>
+    <nav>
+        <div onclick="location.reload()"><i class="fas fa-home"></i></div>
+        <div><i class="fas fa-shield-alt"></i></div>
+        <div><i class="fas fa-cog"></i></div>
+    </nav>
+
+    <script type="module" src="main.js"></script>
 </body>
 </html>
